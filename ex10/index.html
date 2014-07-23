@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="add">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    	
+    <style>
+
+      .axis text {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .hexagon {
+        fill: none;
+        stroke: #000;
+        stroke-width: .5px;
+      }
+
+    </style>
+  </head>
+
+	<body ng-controller="ex10  ">
+    <svg class="chart" width="520" height="490">
+      <g transform="translate(10,10)">
+        <clippath id="clip">
+          <rect class="mesh" width="500" height="470" />
+        </clippath>
+        <g clip-path="url(#clip)">
+          <path ng-repeat="(i, hex) in hexs" ng-attr-d="{{ hexbin.hexagon() }}" ng-attr-transform="translate({{ hex.x }}, {{ hex.y}})" ng-attr-style="fill: {{ color(hex.length) }}" class="hexagon" />
+        </g>
+      </g>
+    </svg>
+    <br/><select ng-model="view" ng-options="p for p in views"></select><br>
+  </body>
+
+	<script type="text/javascript" src="/src/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/src/js/lib/d3.js"></script>
+  <script type="text/javascript" src="/src/js/lib/d3.hexbin.v0.js"></script>
+
+	<script type="text/javascript" src="/src/js/custom/app.js"></script>
+
+	<script type="text/javascript" src="ex10.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="add">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+
+      svg { margin:  auto; text-align: center;}
+
+      .bar {
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: brown;
+      }
+
+      .player {
+        font: 12px sans-serif;
+      }
+
+      .attempts {
+        fill : #555555;
+      }
+
+      .made {
+        fill : steelblue;
+      }
+
+      .player .pct { display: none; }
+      .player circle { display: block;}
+
+      .player:hover .pct { display: block; font-size:11px;}
+      .player:hover circle { display: none; }
+
+      .axis {
+        font: 12px sans-serif;
+      }
+
+    </style>
+  </head>
+
+	<body ng-controller="ex12">
+
+    <svg width="1200" height="800">
+      <g transform="translate(20,0)" class="axis">
+          <line x1="0" y1="40" x2="1200" y2="40" class="axis"></line>
+          <text class="player-name" dy="30">Player</text>
+          <text clsas="feet" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]" ng-attr-dx="{{40*i + 150}}" dy="30" >{{i}}</text>
+      </g>
+      <g transform="translate(20,50)">
+        <g ng-repeat="(i,p) in players" class="player" ng-attr-transform="translate(0,{{ $index*41 }})">
+          <line x1="0" y1="40" x2="920" y2="40" class="axis"></line>
+          <text class="player-name" dy="30">{{ p.name }}</text>
+          <g ng-repeat="(j, a) in p.ranges.attempts" class="distance" ng-attr-transform="translate({{ $index*40 + 150 }}, 0)" width="31">
+            <text class="pct" dy="30" dx="-20">{{ p.ranges.made[j].length }}/{{ a.length }}</text>
+            <circle ng-attr-r="{{ p.scale(a.length) }}" cy="25" class="attempts"></circle>
+            <circle ng-attr-r="{{ p.scale(p.ranges.made[j].length) }}" cy="25" class="made"></circle>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+  </body>
+
+	<script type="text/javascript" src="/src/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/src/js/lib/d3.js"></script>
+
+	<script type="text/javascript" src="/src/js/custom/app.js"></script>
+	<script type="text/javascript" src="ex12.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="add">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    	
+    <style>
+      .chart div {
+        font: 10px sans-serif;
+        background-color: steelblue;
+        text-align: right;
+        padding: 3px;
+        margin: 1px;
+        color: white;
+      }
+    </style>
+  </head>
+
+	<body ng-controller="ex1">
+		<div class="chart">
+			<div ng-repeat="d in data" ng-style="{width:'{{x(d)}}px'}">{{d}}</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="/src/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/src/js/lib/d3.js"></script>
+	<script type="text/javascript" src="/src/js/custom/app.js"></script>
+
+	<script type="text/javascript" src="ex1.js"></script>
+
+  </body>
+</html>
