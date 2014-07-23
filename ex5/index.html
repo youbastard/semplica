@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="add">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    	
+    <style>
+      body {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .area {
+        fill: steelblue;
+      }
+    </style>
+  </head>
+
+	<body ng-controller="ex5">
+    
+    <svg class="chart" ng-attr-width="{{ width + margin.left + margin.right }}" ng-attr-height="{{ height + margin.top + margin.bottom }}">
+      <g ng-attr-transform="translate({{ margin.left }}, {{margin.top }})"> 
+        <g class="x axis" ng-attr-transform="translate(0, {{ height }})">
+          {{ xAxisSvg }}
+        </g>
+        <g class="y axis">
+          <text transform="rotate(-90)" y="6" dy=".71em" style="text-anchor:end;">Price</text>
+          {{ yAxisSvg }}
+        </g>
+        <path class="area" ng-attr-d="{{areaPath}}"></rect>
+      </g>
+		</svg>
+
+	</body>
+
+	<script type="text/javascript" src="/src/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/src/js/lib/d3.js"></script>
+	<script type="text/javascript" src="/src/js/custom/app.js"></script>
+
+	<script type="text/javascript" src="ex5.js"></script>
+
+  </body>
+</html>

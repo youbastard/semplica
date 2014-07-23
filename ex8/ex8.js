@@ -2,7 +2,7 @@
   
 add.controller('ex8', function ($scope, $http, $interval) {
 
-  var speed = 1e-2;
+  var speed = 0.015;
   var start = Date.now();
   var path, projection;
 
@@ -11,11 +11,7 @@ add.controller('ex8', function ($scope, $http, $interval) {
   $scope.ocean = {};
   $scope.projections = [
     'orthographic',
-    'peirceQuincuncial',
-    'albers',
     'azimuthalEqualArea',
-    'conicEqualArea',
-    'conicConformal',
     'equirectangular',
     'stereographic'
   ];
@@ -37,6 +33,8 @@ add.controller('ex8', function ($scope, $http, $interval) {
 
   $interval(function () {
     projection.rotate([speed * (Date.now() - start), -20]);
+
+    path = d3.geo.path().projection(projection);
     $scope.ocean.path = path($scope.ocean.data);
   }, 30);
 
