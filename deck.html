@@ -1,0 +1,224 @@
+<div class="slides">
+    <section data-id="c45db811a2ca08d6eebfbd8887131e1e" class="">
+        <h1>
+            <br>
+        </h1>
+<h1>
+        <font style="font-size: 54px;" color="#980000">design pattern <br>
+        </font>
+    </h1>
+<h1>
+    <font style="font-size: 54px;" color="#980000">for creating data <br>
+    </font>
+</h1>
+<h1>
+<font style="font-size: 54px;" color="#980000">visualizations <br>
+</font>
+</h1>
+<h1>
+<font style="font-size: 54px;" color="#980000">with D3 &amp; Angular</font>
+</h1>
+<p>
+<br>
+</p>
+<p>Nicholas Ortenzio</p>
+<p>
+<a href="https://twitter.com/p_arithmetic">twitter: @p_arithmetic</a>
+</p>
+<p>
+<span style="color: rgb(0, 0, 255);">
+    <a href="https://github.com/youbastard">github: youbastard</a>
+    <br>
+</span>
+</p>
+</section>
+<section data-id="cb229f558a3dc18bf0ad22cb1839e7e4" class="">
+    <img style="width: 196.306px; height: 186px; max-height: none; max-width: none;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530137/687474703a2f2f64336a732e6f72672f6c6f676f2e737667.png">
+    <br>
+    <h1>
+        <br>
+    </h1>
+<p>
+    <strong>D3.js</strong> is a JavaScript library for manipulating documents based on data. <strong>D3</strong>
+ helps you bring data to life using HTML, SVG and CSS. <font color="#666666">D3’s emphasis on 
+web standards gives you the full capabilities of modern browsers without
+ tying yourself to a proprietary framework, combining powerful 
+visualization components and a </font>
+    <b>data-driven approach to DOM manipulation</b>
+</p>
+</section>
+<section data-id="e275d718115222c0ef317063244e768b" class="">
+    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530147/d3graphs.png">
+</section>
+<section data-id="ac34a39944a2fe6fb58df5d16927d9f8" class="">
+    <font color="#ff0000">
+        <img style="width: 270px; height: 270px; max-height: none; max-width: none;" src="http://maffrigby.com/wp-content/uploads/2014/07/angularjs-logo-trans.png">
+        <br>
+        <br>
+    </font>
+    <p id="line1">
+        <b>AngularJS </b>is what HTML would have been, had it been designed for building web-apps. Declarative templates with <b>data-binding</b>, MVW, MVVM, MVC, dependency injection and great testability story all implemented with pure client-side JavaScript</p>
+        <br>
+    </section>
+    <section data-id="1a398467450fd863d0d9dc012f0533d3" class="">
+        <h2>Initial Approach</h2>
+        <p>Put your D3 stuff inside a controller and call it a day.</p>
+        <img data-fragment-index="0" style="width: 588.421px; height: 520px; max-height: none; max-width: none;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530172/initial-approach.png">
+    </section>
+    <section data-id="120864f363d02bcce3d1f445dfbe4af6" class="">
+        <h2>:(</h2>
+        <p>
+        <br>
+    </p>
+    <ul>
+        <li data-fragment-index="0">Not leveraging any Angular JS features</li>
+        <li data-fragment-index="1">UI elements that can change are chart are not managed by D3</li>
+        <li data-fragment-index="2">No communication between frameworks</li>
+        <li data-fragment-index="3">Creating XML nodes in JavaScript drives me crazy</li>
+    </ul>
+    <img style="width: 611.758px; height: 392px; max-height: none; max-width: none;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530183/initial-approach-highlight.png">
+</section>
+<section data-id="fc19b62abf9baf03dbc0d9725ae01b43" class="">
+    <h2>why bad</h2>
+    <p>
+    <br>
+</p>
+<p>
+<br>
+</p>
+<p>
+<br>
+</p>
+<ul>
+    <li>Views are a thing</li>
+    <li>Does not intuitively describe the result<br>
+    </li>
+</ul>
+</section>
+<section data-id="5aca2e57cb02f0f42fef33489371230c" class="">
+    <h2>Alternative Approach</h2>
+    <p>
+    <br>
+</p>
+<p>
+<br>
+</p>
+<p>
+<br>
+</p>
+<ul>
+    <li>Use D3 for the mathy stuff (if you even need it)<br>
+    </li>
+    <li>Use Angular for the everything else<br>
+    </li>
+</ul>
+</section>
+<section data-id="85965872efc596fadc112d95c801b43c" class="">
+    <h2>A simple bar chart</h2>
+    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530217/ex2html.png">
+    <br>
+    <br>
+    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530218/ex2js.png">
+</section>
+<section data-id="f12a56cbd490fd5a7d64ad45b7e4b5a5" class="">
+    <h2>Notes</h2>
+    <p>
+    <br>
+</p>
+<p>
+<br>
+</p>
+<p>
+<br>
+</p>
+<ul>
+    <li>ng-repeat through data. this is the easiest way to create distinct objects like rectangles, lines, circles and groups</li>
+    <li>Use ng-attr-&lt;attributename&gt; or else the browser will complain</li>
+    <li>If the data updates, so will the graph. <br>
+    </li>
+</ul>
+</section>
+<section data-id="fe2884acc7c22fa41a44dd7f858042fd" class="">
+    <h2>First Issue</h2>
+    <p>
+    <br>
+</p>
+<p>Axes(?) are a problem</p>Creating an axis returns a function that gets called directly from a selection.<br>
+<br>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530268/axis.png">
+<br>
+</section>
+<section data-id="a87fe5119bfad4341add9e1c492e2b27" class="">
+    <h2>Solutions</h2>
+    <p>
+    <br>
+</p>
+<p>1. Create an Angular directive</p>
+<p>
+<br>
+</p>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530269/axisdirective.png">
+</section>
+<section data-id="9c90dd44d30ef2ec9c1cf2d7e94b00af" class="">
+    <h2>Solutions</h2>
+    <p>
+    <br>
+</p>
+<p>1. Create an Angular directive</p>
+<p>
+<br>
+</p>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530270/axishtml.png">
+<br>
+<br>
+</section>
+<section data-id="2e2ecd1ed4c90410800eada650801f63" class="">
+    <h2>Solutions</h2>
+    <p>
+    <br>
+</p>
+<p>2. Cheat</p>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530504/axis2-html.png">
+<br>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/nonononono/images/530505/axis2-js.png">
+<br>
+</section>
+<section data-id="3eb1d91570e710d9a62e09cce18cf8a7" class="">
+    <h2>Next Issue</h2>
+    <p>
+    <br>
+</p>
+<p>Charts that arent a 1:1 representation of data</p>
+<ul>
+    <li>Line charts</li>
+    <li>Area charts</li>
+    <li>Polygons</li>
+    <li>Topographic charts</li>
+    <li>Hexagonal Binning</li>
+    <li>Heat maps</li>
+    <li>etc...<br>
+    </li>
+</ul>
+</section>
+<section data-id="407e30e3f455c9ccf5ca5478fad0f961" class="">
+    <h2>Solution</h2>
+    <p>
+    <br>
+</p>
+<p>Similar to Axes, they return a path</p>
+<p>
+<br>
+</p>
+<p>area<br>
+</p>
+<pre><code>area = d3.svg.area()
+    .x(function(d) { return $scope.x(d.date); })
+    .y0($scope.height)
+    .y1(function(d) { return $scope.y(d.close); });
+
+$scope.areaPath = area($scope.data);
+</code></pre>geo<br>
+<pre><code>path = d3.geo.path().projection(projection);   
+$scope.ocean.path = path($scope.ocean.data); </code></pre>
+<br>which you can render<br>
+<pre>&lt;path d="{{ path }}" /&gt;</pre></section><section data-id="ebca22638e2793e4b43fc12313ecf25a" class=""><h2>Further exploration</h2><p><br></p><ul><li>Brushes</li><li>Transitions with ng-animate</li><li>Library of directives</li><li>Deeper understanding of Joins (enter / update / exit)<br></li><li>Admitting this was a terrible idea</li></ul></section><section data-id="ce427b75948543fdd37c9f3a1e3e039f" class=""><h2>Thank you</h2><p><br></p><p><br></p><p>Slides<br></p><p><a href="https://slides.com/nonononono/using-d3-with-angular-js/">https://slides.com/nonononono/using-d3-with-angular-js/</a></p><p><br>Examples</p><p><a href="http://downwith.us/semplica">http://downwith.us/semplica</a><br></p><p><br></p><p>Source</p><p><a href="https://github.com/youbastard/semplica">https://github.com/youbastard/semplica<br></a></p></section></div>
