@@ -32,10 +32,8 @@ add.controller('ex5', function ($scope, $http) {
 
     $scope.data = data;
 
-
-    $scope.xAxisSvg = $scope.xAxis(d3.select('.x.axis'));
-    $scope.yAxisSvg = $scope.yAxis(d3.select('.y.axis'));
-
+    $scope.xAxis(d3.select('.x.axis'));
+    $scope.yAxis(d3.select('.y.axis'));
 
     $scope.areaPath = area($scope.data);
   });
