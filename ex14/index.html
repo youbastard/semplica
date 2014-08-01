@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="add">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+
+      body {
+        font: 10px sans-serif;
+      }
+
+      .chord path {
+        fill-opacity: .67;
+        stroke: #000;
+        stroke-width: .5px;
+      }
+
+    </style>
+  </head>
+
+	<body ng-controller="ex14">
+
+    <svg width="960" height="500">
+      <g transform="translate(480, 250)">
+        <g class="path" ng-repeat="group in groups">
+          <path ng-attr-d="{{ arc(group) }}" ng-attr-fill="{{ fill(group.index) }}" ng-attr-stroke="{{ getFill(group.index) }}" ng-mouseover="onMouseOver($event)" ng-mouseleave="onMouseLeave($event)"/>
+        </g>
+        <g class="chord">
+          <path ng-repeat="chord in chords" ng-attr-d="{{ radius(chord) }}" ng-attr-fill="{{ fill(chord.target.index) }}">
+        </g>
+      </g>
+    </svg>
+
+  </body>
+
+	<script type="text/javascript" src="/src/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/src/js/lib/d3.js"></script>
+
+	<script type="text/javascript" src="/src/js/custom/app.js"></script>
+	<script type="text/javascript" src="ex.js"></script>
+
+</html>
