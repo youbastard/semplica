@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="add">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+
+      svg {
+        margin: auto;
+        text-align: center;
+        background: #ffffff;
+      }
+
+      .stroke {
+        fill: none;
+        stroke: #3b8aca;
+        stroke-width: 10px;
+      }
+
+      .fill {
+        fill: #fff;
+      }
+
+      .graticule {
+        fill: none;
+        stroke: #777;
+        stroke-opacity: .5;
+        stroke-width: .5px;
+      }
+
+      .land {
+        fill: #ffffff;
+      }
+
+      .boundary {
+        fill: none;
+        stroke: #ffffff;
+        stroke-width: 1px;
+      }
+
+      .country {
+        fill: #3b8aca;
+        -webkit-transition: fill .1s;
+        transition: fill .1s;
+        transition-timing-function: ease-in-out;
+        -webkit-transition-timing-function: ease-in-out;
+      }
+
+      .country:hover {
+        fill: #333333;
+      }
+
+    </style>
+  </head>
+
+	<body ng-controller="ex13">
+
+    <svg width="1600" height="1200">
+      <defs>
+        <path id="sphere" ng-attr-d="{{ sphere }}" />
+      </defs>
+      <use class="stroke" xlink:href="#sphere"></use>
+      <use class="fill" xlink:href="#sphere"></use>
+      <path ng-repeat="country in countries" class="country" ng-attr-d="{{ path(country) }}" ng-attr-id="country_{{country.id}}" />
+      <path ng-attr-d="{{ boundary }}" class="boundary" />
+      <path ng-attr-d="{{ graticule }}" class="graticule" />
+    </svg>
+
+  </body>
+
+	<script type="text/javascript" src="/src/js/lib/angular.js"></script>
+	<script type="text/javascript" src="/src/js/lib/d3.js"></script>
+  <script type="text/javascript" src="/src/js/lib/d3.geo.projection.v0.min.js"></script>
+  <script type="text/javascript" src="/src/js/lib/topojson.v1.js"></script>
+
+
+	<script type="text/javascript" src="/src/js/custom/app.js"></script>
+	<script type="text/javascript" src="ex.js"></script>
+
+
+  </body>
+</html>
