@@ -1,4 +1,5 @@
-semplica
+Semplica
 ========
 
-exploring d3 and angular
+Exploring approaches to creating visualizations using D3 & Angular JS, without depending on directives.
+
