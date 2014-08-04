@@ -17,6 +17,7 @@ add.controller('ex14', function ($scope, $http) {
   var innerRadius = Math.min(width, height) * 0.41;
   var outerRadius = innerRadius * 1.1;
 
+
   var chord = d3.layout.chord()
       .padding(0.05)
       .sortSubgroups(d3.descending)
@@ -27,6 +28,18 @@ add.controller('ex14', function ($scope, $http) {
   $scope.fill = d3.scale.ordinal().domain(d3.range(4)).range(["#000000", "#FFDD89", "#957244", "#F26223"]);
   $scope.arc = d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius);
   $scope.radius = d3.svg.chord().radius(innerRadius);
+  $scope.tickGroup = $scope.groups.map(function(g) { return groupTicks(g); });
+
+  function groupTicks(d) {
+    var k = (d.endAngle - d.startAngle) / d.value;
+    return d3.range(0, d.value, 1000).map(function(v, i) {
+      return {
+        angle: ((v * k + d.startAngle) * 180 / Math.PI - 90),
+        label: i % 5 ? null : v / 1000 + "k",
+        distance : outerRadius
+      };
+    });
+  }
 
   $scope.opacity = function (c) {
     if (typeof c.opacity === "undefined") {

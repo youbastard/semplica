@@ -27,8 +27,19 @@
     <svg width="960" height="500">
       <g transform="translate(480, 250)">
 
-        <g class="path" ng-repeat="group in groups">
-          <path ng-attr-d="{{ arc(group) }}" ng-attr-fill="{{ fill(group.index) }}" ng-attr-stroke="{{ getFill(group.index) }}" ng-mouseover="fade(group.index, .1)" ng-mouseleave="fade(group.index, 1)"/>
+        <g class="groups">
+          <g class="path" ng-repeat="group in groups">
+            <path ng-attr-d="{{ arc(group) }}" ng-attr-fill="{{ fill(group.index) }}" ng-attr-stroke="{{ getFill(group.index) }}" ng-mouseover="fade(group.index, .1)" ng-mouseleave="fade(group.index, 1)"/>
+          </g>
+        </g>
+
+        <g class="ticks">
+          <g ng-repeat="ticks in tickGroup">
+            <g class="tick" ng-repeat="tick in ticks" ng-attr-transform="rotate({{ tick.angle }})translate({{ tick.distance }},0)">
+              <line x1="1" y1="0" x2="5" y2="0" style="stroke: rgb(0, 0, 0);"></line>
+              <text x="8" dy=".35em">{{ tick.label }}</text>
+            </g>
+          </g>
         </g>
 
         <g class="chord">
