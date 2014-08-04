@@ -15,6 +15,8 @@
         fill-opacity: .67;
         stroke: #000;
         stroke-width: .5px;
+        -webkit-transition: opacity .25s;
+        transition: opacity .25s;
       }
 
     </style>
@@ -24,12 +26,15 @@
 
     <svg width="960" height="500">
       <g transform="translate(480, 250)">
+
         <g class="path" ng-repeat="group in groups">
-          <path ng-attr-d="{{ arc(group) }}" ng-attr-fill="{{ fill(group.index) }}" ng-attr-stroke="{{ getFill(group.index) }}" ng-mouseover="onMouseOver($event)" ng-mouseleave="onMouseLeave($event)"/>
+          <path ng-attr-d="{{ arc(group) }}" ng-attr-fill="{{ fill(group.index) }}" ng-attr-stroke="{{ getFill(group.index) }}" ng-mouseover="fade(group.index, .1)" ng-mouseleave="fade(group.index, 1)"/>
         </g>
+
         <g class="chord">
-          <path ng-repeat="chord in chords" ng-attr-d="{{ radius(chord) }}" ng-attr-fill="{{ fill(chord.target.index) }}">
+          <path ng-repeat="chord in chords" ng-attr-d="{{ radius(chord) }}" ng-attr-fill="{{ fill(chord.target.index) }}" ng-attr-opacity="{{ opacity(chord) }}">
         </g>
+
       </g>
     </svg>
 

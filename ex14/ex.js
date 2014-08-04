@@ -28,12 +28,17 @@ add.controller('ex14', function ($scope, $http) {
   $scope.arc = d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius);
   $scope.radius = d3.svg.chord().radius(innerRadius);
 
-  $scope.onMouseOver = function (e) {
-    console.log('mouseover');
+  $scope.opacity = function (c) {
+    if (typeof c.opacity === "undefined") {
+      c.opacity = 1;
+    }
+    return c.opacity;
   };
 
-  $scope.onMouseLeave = function (e) {
-    console.log('onmouseleave');
+  $scope.fade = function (index, opacity) {
+    var chords = $scope.chords
+      .filter(function(d) { return d.source.index != index && d.target.index != index; })
+      .forEach(function(d) { d.opacity = opacity; });
   };
 
 });
